@@ -104,7 +104,7 @@ class BC_Homepage(QWidget):
         self.openButton.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
         # Image
-        self.image_frame = Image("/home/pika/Desktop/TIFR/box-crop/images/placeholder.jpg")
+        self.image_frame = Image("/home/pika/Desktop/TIFR/Assignments/box-crop/images/placeholder.jpg")
         self.image_frame.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
         # Layouts
