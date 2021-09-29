@@ -30,7 +30,7 @@ class Image(QWidget):
     def sizeHint(self):
         return self.image.size()
 
-    def plotBoxes(self, anPath, charIndex, all):
+    def plotBoxes(self, anPath, charIndex, char, all):
         filename = os.path.basename(anPath)
         filename = filename[:filename.index('.')]
         
@@ -39,13 +39,18 @@ class Image(QWidget):
         h = img_arr.shape[0]
         w = img_arr.shape[1]
 
+        xcen, ycen, wa, ha = 0, 0, 0, 0
+
         a_file = open(anPath)
         for line in a_file.readlines():
             l_array = line.split(' ')
-            if l_array[0] != str(charIndex) and not all:
+            if l_array[0] != str(charIndex) and not all and l_array[0] != char:
                 continue
             
-            xcen, ycen, wa, ha = l_array[1:]
+            if(len(l_array) == 5):
+                xcen, ycen, wa, ha = l_array[1:]
+            else:
+                xcen, ycen, wa, ha = l_array[2:]
 
             x1 = max(float(xcen) - float(wa) / 2, 0)
             x2 = min(float(xcen) + float(wa) / 2, 1)
@@ -223,7 +228,7 @@ class BC_Homepage(QWidget):
                 msg.setIcon(QMessageBox.Warning)
                 msg.exec_()
             
-            self.image_frame.plotBoxes(self.targetPath+'/'+annotation_file, self.charMapping[char], False)
+            self.image_frame.plotBoxes(self.targetPath+'/'+annotation_file, self.charMapping[char],char, False)
     
     def clear_annotations(self):
         self.image_frame.updateImage(self.currFile)
