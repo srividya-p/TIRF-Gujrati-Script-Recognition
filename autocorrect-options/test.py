@@ -1,10 +1,12 @@
-input_str = "Airpoluton is one of th mst seroussproblens nthe worl. trefes o tthe contamination of"
+input_str = str(input())
+# "Airpoluton is one of th mst seroussproblens nthe worl. trefes o tthe contamination of"
 
 print("Word Segment")
 from wordsegment import load, segment
 load()
 wordbreak = segment(input_str)
-print(wordbreak)
+wordSegmentOutput = ' '.join(str(x) for x in wordbreak)
+print(wordSegmentOutput)
 print()
 
 print("Spell Checker")
@@ -34,7 +36,9 @@ print()
 
 print("WordNinja")
 import wordninja
-print(wordninja.split(input_str))
+wordninjaList = (wordninja.split(input_str))
+wordNinjaOutput = ' '.join(str(x) for x in wordninjaList)
+print(wordNinjaOutput)
 print()
 
 print("Autocorrect with WordNinja")
