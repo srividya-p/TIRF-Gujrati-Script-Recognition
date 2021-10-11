@@ -1,6 +1,7 @@
-input_str = str(input())
+input_str = str(input("Input = \n"))
 # "Airpoluton is one of th mst seroussproblens nthe worl. trefes o tthe contamination of"
 
+print()
 print("Word Segment")
 from wordsegment import load, segment
 load()
@@ -25,6 +26,10 @@ print("Autocorrect")
 from autocorrect import Speller
 check = Speller(lang='en')
 print(check(input_str))
+print()
+
+print("Wordsegment with Autocorrect")
+print(check(wordSegmentOutput))
 print()
 
 # from textblob import Word
