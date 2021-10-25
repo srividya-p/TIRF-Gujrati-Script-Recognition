@@ -1,10 +1,13 @@
-input_str = "Airpoluton is one of th mst seroussproblens nthe worl. trefes o tthe contamination of"
+input_str = str(input("Input = \n"))
+# "Airpoluton is one of th mst seroussproblens nthe worl. trefes o tthe contamination of"
 
+print()
 print("Word Segment")
 from wordsegment import load, segment
 load()
 wordbreak = segment(input_str)
-print(wordbreak)
+wordSegmentOutput = ' '.join(str(x) for x in wordbreak)
+print(wordSegmentOutput)
 print()
 
 print("Spell Checker")
@@ -25,9 +28,27 @@ check = Speller(lang='en')
 print(check(input_str))
 print()
 
-from textblob import Word
-print("TextBlob with word segment")
-for word in wordbreak:
-    tb_word = Word(word)
-    print(tb_word.spellcheck())
+print("Wordsegment with Autocorrect")
+print(check(wordSegmentOutput))
+print()
+
+# from textblob import Word
+# print("TextBlob with word segment")
+# for word in wordbreak:
+#     tb_word = Word(word)
+#     print(tb_word.spellcheck())
+# print()
+
+print("WordNinja")
+import wordninja
+wordninjaList = (wordninja.split(input_str))
+wordNinjaOutput = ' '.join(str(x) for x in wordninjaList)
+print(wordNinjaOutput)
+print()
+
+print("Autocorrect with WordNinja")
+wn = wordninja.split(input_str)
+wn_sentence = ' '.join(str(x) for x in wn)
+check = Speller(lang="en")
+print(check(wn_sentence))
 print()
