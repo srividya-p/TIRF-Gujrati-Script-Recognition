@@ -42,6 +42,7 @@ class Image(QWidget):
         xcen, ycen, wa, ha = 0, 0, 0, 0
 
         a_file = open(anPath)
+        heights = []
         for line in a_file.readlines():
             l_array = line.split(' ')
             if l_array[0] != str(charIndex) and not all and l_array[0] != char:
@@ -57,16 +58,25 @@ class Image(QWidget):
             y1 = max(float(ycen) - float(ha) / 2, 0)
             y2 = min(float(ycen) + float(ha) / 2, 1)
 
+
             x1 = int(w * x1)
             x2 = int(w * x2)
             y1 = int(h * y1)
             y2 = int(h * y2)
+
+            heights.append(float(ha))
 
             annotated_img = cv2.rectangle(
                 img_arr, (x1, y1), (x2, y2), (0, 0, 255), 1)
         
         cv2.imwrite('./annotations/'+filename+'.jpg', annotated_img)
         self.updateImage('./annotations/'+filename+'.jpg')
+
+        avg_font_ratio = sum(heights) / len(heights)
+        print(filename)
+        print("Average Font Ratio = "+str(avg_font_ratio))
+        print("Average Font = "+str(avg_font_ratio * h))
+        print()
 
     def updateImage(self, path):
         self.image = QPixmap(path)
@@ -177,7 +187,7 @@ class BC_Homepage(QWidget):
         self.charMapping = char_index_map
 
     def show_image(self):
-        default = '/home/pika/Downloads/GSR-Downloads/YOLOV3/datasetV3' if self.targetPath == 'Null' else self.targetPath
+        default = '/home/pika/Downloads/GSR-Downloads/Tests' if self.targetPath == 'Null' else self.targetPath
 
         filename, _ = QFileDialog().getOpenFileName(self, 'Select an Image',
                                                     default, 'Image Files (*.jpg *.jpeg *.png *.svg)')
@@ -214,7 +224,7 @@ class BC_Homepage(QWidget):
             filter(lambda file: filename+'.txt' == file, dataset_files))[0]
 
         if self.sender().text() == 'Plot All':
-            self.image_frame.plotBoxes(self.targetPath+'/'+annotation_file, -1, True)
+            self.image_frame.plotBoxes(self.targetPath+'/'+annotation_file, -1, -1, True)
         else:
             char, ok = QInputDialog.getText(self, "Character", "Enter Character:")
             if not char or not ok:
