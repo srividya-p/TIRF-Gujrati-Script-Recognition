@@ -6,7 +6,7 @@ import time
 sr = dnn_superres.DnnSuperResImpl_create()
 
 # Read image
-image = cv2.imread('/home/pika/Downloads/GSR-Downloads/Tests/TNR12.png')
+image = cv2.imread('/home/pika/Downloads/GSR-Downloads/Tests/TNR22.png')
 
 # Read the desired model
 # path = "EDSR_x3.pb"
@@ -25,4 +25,4 @@ result = sr.upsample(image)
 print('Time Taken='+str((time.time()- t_s) * 1000)+' ms')
 
 # Save the image
-cv2.imwrite("fsrcnn4.png", result)
+cv2.imwrite("fsrcnnTNR22.png", result)
