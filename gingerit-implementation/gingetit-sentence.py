@@ -13,7 +13,7 @@ for i in range(len(dividedInput)):
         smallerInput = [(ip[i : i + constraint]) for i in range(0, len(dividedInput[i]), constraint)]
         for j in range(len(smallerInput)):
             parser = GingerIt()
-            unifiedOutput += parser.parse(smallerInput[i]).['result']
+            unifiedOutput += parser.parse(smallerInput[i])['result']
     else:
         parser = GingerIt()
         #print("Corrected Output:")
