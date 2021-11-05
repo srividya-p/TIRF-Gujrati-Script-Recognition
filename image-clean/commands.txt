@@ -1,0 +1,6 @@
+./textcleaner -g -e stretch -f 25 -o 10 -u -s 1 -T -p 10 np4.png np4CL.png
+
+BETTER
+./textcleaner -g -e stretch -f 25 -o 20 -t 30 -u -s 1 -T -p 20 np4.png np4CL.png
+
+./noisecleaner -m 1 -n 5 np4CL.png np4CLNR.png
