@@ -9,7 +9,7 @@ dividedInput = ip.split(".")
 unifiedOutput = ''
 
 for i in range(len(dividedInput)):
-    if(len(dividedInput[i] >= 300)):
+    if(len(dividedInput[i]) >= 300):
         smallerInput = [(ip[i : i + constraint]) for i in range(0, len(dividedInput[i]), constraint)]
         for j in range(len(smallerInput)):
             parser = GingerIt()
