@@ -60,21 +60,22 @@ def _generate_horizontal_text(
         # Remove extra trailing space
         splitted_text.pop()
 
-        # Second loop - Check if there is a half character occourance ('્') 
+        # Second loop - To check if there is a half consonant occourance ('્') 
         # If it is present merge the element with the following element. 
         i, merged_half_chars = 0, []
 
         while i < len(splitted_text):
-            # This element contains a half character
+            # This element contains a half consonant
             if '્' in splitted_text[i] and i<len(splitted_text)-1: 
-                # Handle case where half character is at the end of the word
+                # Handle case where half consonant is at the end of the word
                 if splitted_text[i + 1] == ' ': 
                     merged_half_chars.append(splitted_text[i])
-                # The half character is in between the word
+                # The half consonant is in between the word
                 else:
-                    merged_half_chars.append(splitted_text[i]+splitted_text[i + 1]) #Merge the current and next string
+                    # Merge the current and next string
+                    merged_half_chars.append(splitted_text[i]+splitted_text[i + 1]) 
                     i += 1
-            # This element does not contain half character so just add it to final list
+            # This element does not contain half consonant so just add it to final list
             else: 
                 merged_half_chars.append(splitted_text[i])
             i += 1
