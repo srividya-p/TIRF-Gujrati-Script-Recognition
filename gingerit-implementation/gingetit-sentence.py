@@ -19,7 +19,6 @@ for i in range(len(dividedInput)):
             unifiedOutput += parser.parse(smallerInput[j])['result']
     else:
         parser = GingerIt()
-        #print("Corrected Output:")
         unifiedOutput += parser.parse(dividedInput[i])['result']
 
 end = time.time()
