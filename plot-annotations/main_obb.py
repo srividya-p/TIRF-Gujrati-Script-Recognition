@@ -49,7 +49,7 @@ class Image(QWidget):
                 continue
             
             if(len(l_array) == 5):
-                x1, y1, x2, y2 = l_array
+                x1, y1, x2, y2 = l_array[1:]
             else:
                 # xcen, ycen, wa, ha = l_array[2:]
                 x1, y1, x2, y2 = l_array
