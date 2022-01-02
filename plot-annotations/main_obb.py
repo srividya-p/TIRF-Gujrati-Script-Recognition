@@ -68,7 +68,7 @@ class Image(QWidget):
             # heights.append(float(ha))
 
             annotated_img = cv2.rectangle(
-                img_arr, (int(x1), int(y1)), (int(x2), int(y2)), (0, 0, 255), 1)
+                img_arr, (int(float(x1)), int(float(y1))), (int(float(x2)), int(float(y2))), (0, 0, 255), 1)
 
         
         cv2.imwrite('./annotations/'+filename+'.jpg', annotated_img)
